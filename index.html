@@ -2,59 +2,39 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Dla Ciebie ❤️</title>
+  <title>Nasze miejsce 🤍</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Arial', sans-serif;
-      color: #fff;
-      text-align: center;
-    }
-    .card {
-      background: rgba(0,0,0,0.25);
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 400px;
-    }
-    button {
-      margin-top: 20px;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 25px;
-      background: #fff;
-      color: #ff6f91;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<header>
+  <h1>Nasze miejsce 🤍</h1>
+  <p>Mały pamiętnik tylko dla Ciebie</p>
+</header>
+
+<section class="memory">
+  <h2>📖 Wspomnienia</h2>
+
   <div class="card">
-    <h1>Dla Ciebie ❤️</h1>
-    <p id="text">
-      Jeśli to widzisz, to znaczy, że właśnie o Tobie myślę.
-    </p>
-    <button onclick="changeText()">Kliknij 💕</button>
+    <img src="img/photo1.jpg">
+    <p><strong>12.07.2024</strong><br>
+    Pierwszy dzień, który wszystko zmienił.</p>
   </div>
 
-  <script>
-    const texts = [
-      "Jesteś moim ulubionym miejscem na świecie ❤️",
-      "Ten NFC to tylko pretekst, żeby powiedzieć: kocham Cię 😘",
-      "Uśmiechnij się. Właśnie teraz.",
-      "Zawsze. Bez wyjątków. My."
-    ];
-    let i = 0;
-    function changeText() {
-      i = (i + 1) % texts.length;
-      document.getElementById("text").innerText = texts[i];
-    }
-  </script>
+  <div class="card">
+    <img src="img/photo2.jpg">
+    <p><strong>03.09.2024</strong><br>
+    Ten śmiech będę pamiętał zawsze.</p>
+  </div>
+</section>
+
+<section class="secret">
+  <button onclick="showSecret()">Kliknij, kiedy będziesz potrzebować 🤍</button>
+  <p id="secretText"></p>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
+
