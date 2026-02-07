@@ -3,123 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moja Strona - Bio Link</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>Nasza Kraina - Adrian & Dominika</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Indie+Flower&display=swap" rel="stylesheet">
     <style>
-        /* Podstawowe style tła i czcionki */
+        /* --- OGÓLNE STYLE --- */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #0d0d0d; /* Ciemne tło */
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
+            font-family: 'Indie Flower', cursive; /* Luźny, odręczny font */
+            background: linear-gradient(135deg, #2E0D06 0%, #000000 100%); /* Ciepłe, przyjemne tło */
+            color: #4a4a4a;
+            line-height: 1.6;
+            overflow-x: hidden; /* Zapobieganie poziomemu przewijaniu przez animacje */
         }
 
-        /* Animowane tło w stylu gradientu (opcjonalne, dla efektu siur.pagy) */
-        .background-blur {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
-            z-index: -1;
-        }
-
-        /* Kontener główny */
-        .container {
+        /* --- NAGŁÓWKI --- */
+        h1, h2 {
+            font-family: 'Caveat', cursive; /* Bardziej wyrazisty font dla nagłówków */
             text-align: center;
-            background: rgba(255, 255, 255, 0.05); /* Efekt szkła */
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Zdjęcie profilowe */
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.2);
+            color: #FFFFFF; /* Głęboki róż/czerwień */
             margin-bottom: 20px;
+            position: relative;
+            z-index: 1; /* Ważne dla nakładających się elementów */
         }
 
-        /* Teksty */
         h1 {
-            font-size: 24px;
-            margin: 10px 0;
-            font-weight: 600;
+            font-size: 3.5em; /* Duży nagłówek */
+            margin-top: 40px;
+            text-shadow: 2px 2px 0 rgba(255,255,255,0.7);
         }
 
-        p {
-            font-size: 14px;
-            color: #aaaaaa;
-            margin-bottom: 30px;
+        h2 {
+            font-size: 2.2em;
+            color: #823030;
+            margin-top: 30px;
+            margin-bottom: 15px;
         }
 
-        /* Przyciski/Linki */
-        .links {
+        /* --- KONTENER GŁÓWNY (NA TELEFONY) --- */
+        .container {
+            max-width: 90%; /* Wąsko na telefony */
+            margin: 0 auto;
+            padding: 20px 0;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 40px;
         }
 
-        .link-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px;
-            border-radius: 12px;
-            text-decoration: none;
+        /* --- KARTY SEKCJI --- */
+        .doodly-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 2px dashed #BF1B1B; /* Doodly ramka */
+            position: relative;
+            overflow: hidden;
+            animation: bounceIn 1s ease-out; /* Ogólna animacja wejścia */
+        }
+
+        /* --- ZDJĘCIA --- */
+        .doodly-img {
+            max-width: 95%;
+            height: auto;
+            border-radius: 10px;
+            margin: 15px auto;
+            border: 3px solid #BF1B1B; /* Różowa ramka */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transform: rotate(-3deg); /* Lekkie przechylenie dla efektu "doodly" */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .doodly-img:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* --- TEKSTY --- */
+        p {
+            font-size: 1.1em;
+            color: #000000; /* Fioletowy tekst dla kontrastu */
+            margin-bottom: 10px;
+        }
+
+        .small-text {
+            font-size: 0.9em;
+            color: #888;
+            margin-top: -10px;
+        }
+
+        /* --- LICZNIK DNI --- */
+        .counter-doodly {
+            background-color: #732F2F; /* Jasny żółty/kremowy */
+            padding: 20px;
+            border-radius: 20px;
+            border: 3px dashed #732F2;
+            font-family: 'Caveat', cursive;
+            color: #171616; /* Pomarańczowy tekst */
+            font-size: 1.8em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            animation: wobble 2s infinite ease-in-out; /* Lekkie bujanie */
+        }
+
+        .counter-doodly span {
+            font-size: 1.2em; /* Większa liczba dni */
+            font-weight: bold;
+            color: #171616; /* Mocniejszy pomarańcz */
+        }
+
+        /* --- PRZYCISK WEJŚCIA --- */
+        .enter-btn {
+            background: linear-gradient(45deg, #B32E2E, #B32E2E); /* Różowo-fioletowy gradient */
             color: white;
-            font-weight: 400;
+            text-decoration: none;
+            padding: 15px 35px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .link-card:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        /* Stopka */
-        .footer {
+            display: inline-block;
             margin-top: 30px;
-            font-size: 12px;
-            color: #555;
+            letter-spacing: 1px;
+            font-family: 'Caveat', cursive;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #BF1B1B, #BF1B1B); /* Odwrócony gradient na hover */
+        }
+
+        /* --- ANIMACJE (CSS KEYFRAMES) --- */
+
+        /* Animacja wejścia całej karty */
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+            60% { opacity: 1; transform: scale(1.05) translateY(-5px); }
+            100% { transform: scale(1) translateY(0); }
+        }
+
+        /* Animacja bujania licznika */
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(1deg); }
+            75% { transform: rotate(-1deg); }
+        }
+
+        /* Animacje dla elementów pojawiających się przy scrollowaniu */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- TŁO: ANIMOWANE KSZTAŁTY (Opcjonalne, ale fajne!) --- */
+        .bubble {
+            position: absolute;
+            background-color: rgba(255, 182, 193, 0.3); /* Jasnoróżowy bąbelek */
+            border-radius: 50%;
+            pointer-events: none; /* Nie blokuje kliknięć */
+            animation: floatBubbles 15s infinite ease-in-out;
+            opacity: 0;
+            z-index: 0;
+        }
+
+        .bubble:nth-child(1) { width: 60px; height: 60px; left: 10%; bottom: -100px; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 80px; height: 80px; left: 25%; bottom: -120px; animation-delay: 2s; background-color: rgba(255, 223, 186, 0.3); }
+        .bubble:nth-child(3) { width: 50px; height: 50px; left: 40%; bottom: -80px; animation-delay: 4s; }
+        .bubble:nth-child(4) { width: 70px; height: 70px; left: 60%; bottom: -110px; animation-delay: 6s; background-color: rgba(255, 182, 193, 0.3); }
+        .bubble:nth-child(5) { width: 90px; height: 90px; left: 80%; bottom: -130px; animation-delay: 8s; background-color: rgba(255, 223, 186, 0.3); }
+
+        @keyframes floatBubbles {
+            0% { transform: translateY(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-1000px); opacity: 0; }
+        }
+
+        /* --- MEDIA QUERIES (Dla telefonów, ale dostosowanie jest w głównym kontenerze) --- */
+        @media (min-width: 600px) {
+            .container {
+                max-width: 500px; /* Trochę szerszy na tabletach/większych telefonach */
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="background-blur"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
 
     <div class="container">
-        <img src="https://via.placeholder.com/150" alt="Avatar" class="profile-img">
         
-        <h1>@TwojaNazwa</h1>
-        <p>Krótki opis Twojego profilu lub cytat.</p>
+        <h1>Adrian & Dominika</h1>
+        <p class="small-text" style="text-align: center;">Nasza Biblioteka <3</p>
 
-        <div class="links">
-            <a href="https://instagram.com/twoj_profil" target="_blank" class="link-card">Instagram</a>
-            <a href="https://tiktok.com/@twoj_profil" target="_blank" class="link-card">TikTok</a>
-            <a href="https://discord.gg/zaproszenie" target="_blank" class="link-card">Discord</a>
-            <a href="https://github.com/twoj_profil" target="_blank" class="link-card">GitHub</a>
+        <div class="doodly-card animate-on-scroll">
+            <h2>nasza podrusz do iłzy<br>(i jedno z lepszych zdjęć xD)</h2>
+            <img src="photo1.jpg" alt="Początki" class="doodly-img">
+            <p>
+                Bardzo dobrze wspominam ten dzien, mimo ze sam zamek byl nieciekawy XDD, lecz overall byla to udana podróż
+            </p>
         </div>
 
-        <div class="footer">
-            siur.pagy.site inspired
+        <div class="doodly-card animate-on-scroll">
+            <h2>fembojowski wrocław</h2>
+            <img src="photo2.jpg" alt="Wspólna chwila" class="doodly-img">
+            <p>
+                Mysle ze nie odpierdalamy za dużo, ale tutaj poleciał niezły fristajl i takim sposobem mama dalej myśli ze byłem na osiemnastce bąk
+            </p>
         </div>
+
+        <div class="doodly-card animate-on-scroll">
+            <h2>podzienkowanie</h2>
+            <img src="photo1" alt="low ju" class="doodly-img">
+            <p>
+                Jest mi niezmiernie milo ze mam szanse zyc z takim kims jak ty, moze nie zawsze bylo kolorowo i napewno nie zawsze bedzie ale na koniec dnia wiem ze moge na ciebie liczyc, tak samo jak ty na mnnie :p
+            </p>
+        </div>
+
+        <div class="doodly-card animate-on-scroll counter-doodly">
+            <span>Jesteśmy razem już:</span>
+            <span id="days-counter">0</span>
+            <span>dni </span>
+        </div>
+
+        <div class="doodly-card animate-on-scroll" style="text-align: center; border: none; box-shadow: none; background-color: transparent;">
+            <p style="color: #FFFFFF; font-weight: bold; font-size: 1.2em;">
+                lowki
+            </p>
+            <a href="galeria.html" class="enter-btn">nasza galeria</a>
+        </div>
+
     </div>
 
+    <script>
+        // --- USTAW DATĘ POZNANIA PONIŻEJ ---
+        // Format: Rok, Miesiąc (Styczeń=0, Luty=1...), Dzień
+        const startDate = new Date(2025, 2, 15); // Np. 14 Luty 2023
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('days-counter').innerText = days;
+        }
+        updateCounter();
+
+        // --- OBSERWATOR DO ANIMACJI PRZY PRZEWIJANIU ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Możesz odobserwować element po aktywacji, żeby animował się tylko raz
+                    // observer.unobserve(entry.target); 
+                } else {
+                    // Jeśli chcesz, żeby animacje wracały po przewinięciu w górę
+                    // entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.3 }); // Element widoczny w 30%
+
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+
+    </script>
 </body>
 </html>
